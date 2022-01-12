@@ -16,24 +16,24 @@ function Home() {
 
     const [msgs, setMsgs] = useState([]);
 
-    const user1 = auth.currentUser.uid;
+    const user1 = auth.currentUser;
 
     useEffect(() => {
-        const usersRef = collection(db,'users');
-        // // //crearting a  query object
-        const q = query(usersRef, where('uid','not-in', [user1]));
+        // const usersRef = collection(db,'users');
+        // // // //crearting a  query object
+        // const q = query(usersRef, where('uid','not-in', [user1]));
 
-        // //executing the query
-        const unsub = onSnapshot(q,(querySnapshot) =>{
-            let users = [];
-            querySnapshot.forEach(doc => {
-                users.push(doc.data());
-            });
-            setusers(users);
-        });
-        return () => {
-            unsub();
-        }
+        // // //executing the query
+        // const unsub = onSnapshot(q,(querySnapshot) =>{
+        //     let users = [];
+        //     querySnapshot.forEach(doc => {
+        //         users.push(doc.data());
+        //     });
+        //     setusers(users);
+        // });
+        // return () => {
+        //     unsub();
+        // }
     }, [user1]);
 
     const selectUser = async (user) => {
